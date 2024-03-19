@@ -187,10 +187,11 @@ h1 {
 }
 
 .servicesDiv {
+  position: relative;
   width: 80%;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -198,20 +199,87 @@ h1 {
 }
 
 .servicesCard {
+  position: relative;
   width: 100%;
-  height: 300px;
+  height: 150px;
   text-align: center;
   border: 1px solid var(--secondary-color);
   border-radius: 15px;
   box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.5);
   padding: 1rem;
+  /* overflow: hidden; */
+  transition: 0.5s;
+  margin-bottom: 3rem;
+}
+
+.servicesCard:hover {
+  height: 300px;
+}
+
+.servicesCard .imgDiv {
+  position: absolute;
+  top: -31%;
+  left: 50%;
+  width: 40%;
+  height: 6rem;
+  padding: 0.8rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 20px;
+  background-color: var(--bg-color);
+  transform: translateX(-50%);
+  transition: 0.5s;
+  z-index: 10;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.servicesCard:hover .imgDiv {
+  width: 50%;
+  height: 7rem;
+  top: 20px;
+}
+
+.servicesCard .imgDiv .servicesImg {
+  position: absolute;
+  width: calc(100% - 1.6rem);
+  height: calc(100% - 1.6rem);
+  z-index: 1;
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+.servicesCard:hover .imgDiv .servicesImg {
+  opacity: 1;
+}
+
+.servicesCard .servicesContent {
+  position: absolute;
+  width: calc(100% - 2rem);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
 
-.servicesImg {
+.servicesCard .servicesContent .details {
+  /* padding: 1rem; */
+  text-align: center;
+  width: 100%;
+  transition: 0.5s;
+  transform: translateY(45px);
+}
+
+/* .servicesCard:hover .servicesContent .details {
+  transform: translateY(-30px);
+} */
+
+/* .servicesImg {
   width: 47%;
   margin-bottom: 1rem;
-}
+} */
 
 .servicesCard h3 {
   font-size: 1.5rem;
@@ -221,6 +289,12 @@ h1 {
 
 .servicesCard p {
   /* color: var(--text-color); */
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.servicesCard:hover p {
+  opacity: 1;
 }
 
 @media screen and (min-width: 569px) {
@@ -254,6 +328,10 @@ h1 {
   .menuIconLabel {
     display: none;
   }
+
+  .servicesCard {
+    height: 200px;
+  }
 }
 
 @media screen and (min-width: 969px) {
@@ -262,6 +340,17 @@ h1 {
   }
   .servicesCard {
     width: 28%;
+  }
+
+  .servicesCard:hover {
     height: 400px;
+  }
+
+  .servicesCard .imgDiv {
+    height: 7rem;
+  }
+
+  .servicesCard:hover .imgDiv {
+    height: 8rem;
   }
 }
