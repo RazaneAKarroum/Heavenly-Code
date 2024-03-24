@@ -175,15 +175,20 @@ h1 {
   text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.title {
-  color: var(--primary-color);
+.title,
+.ourServicesTitle {
+  color: var(--footer-bg-color);
   font-size: clamp(1.7rem, 3.5vw, 3.7rem);
-  /* font-weight: 700; */
   text-align: center;
-  /* margin-top: clamp(2rem, 2.5vw, 3rem);
-  margin-bottom: clamp(2rem, 2.5vw, 3rem); */
-  margin-top: 3.5rem;
-  margin-bottom: 3.5rem;
+}
+
+.title {
+  margin: 5.5rem 0;
+}
+
+.ourServicesTitle {
+  margin-top: 5.5rem;
+  margin-bottom: 6.5rem;
 }
 
 .servicesDiv {
@@ -203,13 +208,13 @@ h1 {
   width: 100%;
   height: 150px;
   text-align: center;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--footer-bg-color);
   border-radius: 15px;
   box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.5);
   padding: 1rem;
   /* overflow: hidden; */
   transition: 0.5s;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
 }
 
 .servicesCard:hover {
@@ -223,7 +228,7 @@ h1 {
   width: 40%;
   height: 6rem;
   padding: 0.8rem;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--footer-bg-color);
   border-radius: 20px;
   background-color: var(--bg-color);
   transform: translateX(-50%);
@@ -283,7 +288,7 @@ h1 {
 
 .servicesCard h3 {
   font-size: 1.5rem;
-  color: var(--primary-color);
+  color: var(--footer-bg-color);
   margin-bottom: 1rem;
 }
 
@@ -297,12 +302,163 @@ h1 {
   opacity: 1;
 }
 
+/* angle1 division style*/
+.angle {
+  position: relative;
+}
+
+.angle::after {
+  content: "";
+  position: absolute;
+}
+
+.angle1 {
+  background-color: var(--secondary-color);
+}
+
+.angle1,
+.angle1::after {
+  width: 100%;
+  height: 80px;
+}
+
+.angle1::after {
+  background-color: var(--bg-color);
+  -webkit-clip-path: polygon(100% 100%, 100% 0, 0 0);
+  clip-path: polygon(100% 100%, 100% 0, 0 0);
+}
+
+/* angle2 division style*/
+
+.angle2 {
+  background-color: var(--bg-color);
+}
+
+.angle2,
+.angle2::after {
+  width: 100%;
+  height: 40px;
+}
+
+.angle2::after {
+  background-color: var(--secondary-color);
+  -webkit-clip-path: polygon(100% 100%, 100% 0, 0 0);
+  clip-path: polygon(0 0, 70% 0, 100% 0, 100% 100%, 70% 0, 0 100%);
+}
+
+/* why Us Section  */
+#whyUsSection {
+  background: var(--secondary-color);
+  padding: 0 2rem 7rem 2rem;
+}
+
+.subtitle {
+  font-size: 2rem;
+  color: var(--bg-color);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.whyUsDiv p {
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  margin-bottom: 1rem;
+}
+
+#wow {
+  color: var(--bg-color);
+  font-weight: 600;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.features li {
+  width: 100%;
+  list-style-type: none;
+  font-size: larger;
+  margin-bottom: 1rem;
+}
+
+.features li:last-child {
+  margin-bottom: 0;
+}
+
+.features img {
+  width: 22px;
+  margin-right: 0.5rem;
+}
+
+.features i {
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+}
+
+.aboutUsDiv,
+.contactUsDiv {
+  width: 80%;
+  margin: auto;
+  font-size: 1.3rem;
+  line-height: 2.5rem;
+}
+
+.contactIcons {
+  margin-top: 1rem;
+}
+
+.contactIcons li {
+  list-style-type: none;
+}
+
+.contactIcons i {
+  color: var(--secondary-color);
+}
+
+.contactIcons a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.footerSection {
+  background-color: var(--footer-bg-color);
+  margin-top: 3rem;
+  padding: 2rem 0;
+  color: var(--bg-color);
+  text-align: center;
+}
+
+.socialIcons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  list-style-type: none;
+  margin-bottom: 1.5rem;
+}
+
+.socialIcons a {
+  color: var(--bg-color);
+  font-size: 1.5rem;
+}
+
 @media screen and (min-width: 569px) {
   .servicesDiv {
     width: 90%;
   }
   .servicesCard {
     width: 47%;
+  }
+  .angle1,
+  .angle1::after {
+    height: 120px;
+  }
+  .features li {
+    width: 49%;
   }
 }
 
@@ -338,6 +494,14 @@ h1 {
   .header {
     padding: 1.3rem 3%;
   }
+
+  .title {
+    margin: 5rem 0;
+  }
+
+  .ourServicesTitle {
+    margin-bottom: 8.5rem;
+  }
   .servicesCard {
     width: 28%;
   }
@@ -352,5 +516,14 @@ h1 {
 
   .servicesCard:hover .imgDiv {
     height: 8rem;
+  }
+  .angle1,
+  .angle1::after {
+    height: 160px;
+  }
+
+  .angle2,
+  .angle2::after {
+    height: 80px;
   }
 }
