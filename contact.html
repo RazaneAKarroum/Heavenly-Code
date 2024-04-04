@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles.css" />
     <title>Heavenly Code</title>
   </head>
-  <body class="itim-regular">
+  <body class="poppins-regular">
     <!-- main Section   -->
     <section class="mainSection">
       <header class="header">
@@ -24,10 +24,10 @@
           <i class="fa-solid fa-xmark" id="closeIcon"></i>
         </label>
         <nav class="navbar">
-          <a href="">Home</a>
-          <a href="">Our Services</a>
-          <a href="">About Us</a>
-          <a href="">Contact Us</a>
+          <a href="index.html#mainSection">Home</a>
+          <a href="index.html#ourServices">Our Services</a>
+          <a href="index.html#aboutUsSection">About Us</a>
+          <a href="index.html#contactUsSection">Contact Us</a>
         </nav>
       </header>
       <h1>contact Us</h1>
@@ -35,21 +35,21 @@
     <!-- Contact Us -->
     <section id="contactFormSection">
       <h2>Kindly fill this form</h2>
-      <form>
-        <div>
-          <input type="text" placeholder="Your name" />
+      <form class="submitMessageForm">
+        <div class="inputField">
           <i class="fa-regular fa-circle-user"></i>
+          <input type="text" placeholder="Your name" />
         </div>
-        <div>
-          <input type="email" placeholder="Your email address" />
+        <div class="inputField">
           <i class="fa-regular fa-envelope"></i>
+          <input type="email" placeholder="Your email address" />
         </div>
-        <div>
-          <textarea name="message" placeholder="Write a brief idea of your project"></textarea>
+        <div class="inputField">
           <i class="fa-regular fa-comment-dots"></i>
+          <textarea name="message" placeholder="Write a brief idea of your project"></textarea>
         </div>
-        <div>
-          <button type="submit">Send Message</button>
+        <div class="btnDiv">
+          <button type="submit" class="btn">Send Message</button>
         </div>
       </form>
     </section>
@@ -73,7 +73,7 @@
       <span>
         Powered by
         <i class="fa-regular fa-copyright"></i>
-        <a>Heavenly code</a>
+        <a href="index.html" id="heavenlycodeFooter">Heavenly code</a>
       </span>
     </section>
 
