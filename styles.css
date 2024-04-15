@@ -27,6 +27,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -44,7 +45,8 @@ body {
   height: 100vh;
   width: 100%;
   background-color: var(--bg-color);
-  color: var(--text-color);
+  color: var(--footer-bg-color);
+  scroll-behavior: smooth;
 }
 
 .mainSection {
@@ -94,12 +96,20 @@ body {
   left: 100%;
 }
 
-.logo {
+/* .logo {
   font-size: clamp(1.1rem, 2.5vw, 2rem);
   text-decoration: none;
   color: var(--bg-color);
   font-weight: 700;
   z-index: 1;
+} */
+
+.logoLink {
+  flex: 1;
+}
+
+.logo {
+  width: 25%;
 }
 
 /* .navbar {
@@ -115,17 +125,35 @@ body {
     transition: 0.3s ease;
 } */
 
-.navbar,
-.navbar a {
+#navbar,
+#navbar a {
   transition: 0.3s ease;
 }
 
-#check:checked ~ .navbar a:hover,
-.navbar a:hover {
+#closeIcon {
+  display: none;
+}
+
+#menuIcon,
+#closeIcon {
+  color: var(--bg-color);
+  font-size: 1.5rem;
+}
+
+.active #closeIcon {
+  display: block;
+}
+
+.active #menuIcon {
+  display: none;
+}
+
+.active ~ #navbar a:hover,
+#navbar a:hover {
   color: var(--footer-bg-color);
 }
 
-#check:checked ~ .navbar {
+.active ~ #navbar {
   position: absolute;
   width: 100%;
   top: 100%;
@@ -136,22 +164,31 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-/* .navbar a {
-    display: block;
-    font-size: 1.1rem;
-    margin: 1.5rem 0;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    transform: translateY(-10px);
-    transition: .3s ease; 
-} */
+.active ~ #overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
 
-.navbar a {
+#navbar a {
+  display: block;
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  transform: translateY(-10px);
+  transition: 0.3s ease;
+}
+
+#navbar a {
   display: none;
 }
 
-#check:checked ~ .navbar a {
+.active ~ #navbar a {
   display: block;
   font-size: 1.1rem;
   margin: 1.5rem 0;
@@ -162,7 +199,7 @@ body {
   transition: 0.3s ease;
 }
 
-#check {
+/*#check {
   display: none;
 }
 
@@ -173,8 +210,8 @@ body {
   font-size: clamp(1.6rem, 2.5vw, 2.8rem);
   color: var(--bg-color);
   cursor: pointer;
-}
-
+} */
+/* 
 #check:checked ~ .menuIconLabel #menuIcon {
   display: none;
 }
@@ -185,11 +222,11 @@ body {
 
 .menuIconLabel #closeIcon {
   display: none;
-}
+} */
 
-h1 {
+.headerTitle {
   position: relative;
-  top: 37%;
+  top: 24%;
   padding: 1rem;
   text-align: center;
   color: var(--bg-color);
@@ -205,11 +242,12 @@ h1 {
 }
 
 .title {
-  margin: 5.5rem 0;
+  /* margin: 5.5rem 0; */
+  padding: 5.5rem 0;
 }
 
 .ourServicesTitle {
-  margin-top: 5.5rem;
+  padding-top: 6.6rem;
   margin-bottom: 6.5rem;
 }
 
@@ -240,7 +278,7 @@ h1 {
 }
 
 .servicesCard:hover {
-  height: 300px;
+  height: 350px;
 }
 
 .servicesCard .imgDiv {
@@ -292,11 +330,30 @@ h1 {
 }
 
 .servicesCard .servicesContent .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   /* padding: 1rem; */
-  text-align: center;
+  /* text-align: center; */
   width: 100%;
   transition: 0.5s;
-  transform: translateY(45px);
+  transform: translateY(70px);
+}
+.details p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.servicesDescBtn {
+  text-decoration: none;
+  color: var(--bg-color);
+  padding: 0.5rem 1.1rem;
+  margin: 1rem auto;
+  background: var(--secondary-color);
+  border-radius: 20px;
 }
 
 /* .servicesCard:hover .servicesContent .details {
@@ -309,7 +366,7 @@ h1 {
 } */
 
 .servicesCard h3 {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
   color: var(--footer-bg-color);
   margin-bottom: 1rem;
 }
@@ -368,6 +425,23 @@ h1 {
   clip-path: polygon(0 0, 70% 0, 100% 0, 100% 100%, 70% 0, 0 100%);
 }
 
+/* angle3 division style */
+.angle3 {
+  background-color: var(--secondary-color);
+}
+
+.angle3,
+.angle3::after {
+  width: 100%;
+  height: 80px;
+}
+
+.angle3::after {
+  background-color: var(--bg-color);
+  -webkit-clip-path: polygon(0 100%, 100% 0, 0 0);
+  clip-path: polygon(0 100%, 100% 0, 0 0);
+}
+
 /* why Us Section  */
 #whyUsSection {
   background: var(--secondary-color);
@@ -424,8 +498,26 @@ h1 {
 .contactUsDiv {
   width: 80%;
   margin: auto;
-  font-size: 1.3rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   line-height: 2.5rem;
+  padding-bottom: 0.9rem;
+}
+
+.aboutUsDiv p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+#contactUsSection {
+  background: var(--secondary-color);
+  padding-bottom: 5rem;
+}
+
+.contactTitle {
+  color: var(--bg-color);
+  font-size: clamp(1.7rem, 3.5vw, 3.7rem);
+  text-align: center;
+  padding-top: 4rem;
 }
 
 .contactIcons {
@@ -437,22 +529,22 @@ h1 {
 }
 
 .contactIcons i {
-  color: var(--secondary-color);
+  color: var(--bg-color);
 }
 
 .contactIcons a {
-  color: var(--text-color);
+  color: var(--footer-bg-color);
   text-decoration: none;
 }
 
 .contactIcons a:hover {
-  color: var(--secondary-color);
+  color: var(--bg-color);
   /* text-decoration: underline; */
 }
 
 .footerSection {
   background-color: var(--footer-bg-color);
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
   padding: 2rem 0;
   color: var(--bg-color);
   text-align: center;
@@ -491,15 +583,16 @@ h1 {
 }
 .submitMessageForm {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 90%;
   gap: 2rem;
+  flex-wrap: wrap;
   margin: 1rem auto;
 }
 .inputField {
-  width: 80%;
+  width: 100%;
   border: 1px solid var(--secondary-color);
   border-radius: 32px;
   padding: 1rem;
@@ -507,9 +600,21 @@ h1 {
   justify-content: flex-start;
 }
 
+input::placeholder,
+textarea::placeholder {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-weight: 300;
+}
+
 .inputField i {
   color: var(--secondary-color);
   font-size: 1.5rem;
+}
+
+.phoneCountryCode {
+  border: none;
+  background: transparent;
+  margin-left: 1rem;
 }
 
 .inputField input,
@@ -524,7 +629,56 @@ h1 {
 }
 
 .inputField textarea {
+  width: 100%;
   height: 5rem;
+}
+
+.contactTimeDiv,
+.contactWayDiv {
+  width: 100%;
+}
+
+.contactTimeTitle,
+.contactWayTitle {
+  font-weight: 500;
+}
+
+.radioContactTimeDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+}
+
+.contactTimeInput {
+  display: none;
+}
+
+.radioContactTimeDiv label {
+  display: block;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.contactTimeSpan {
+  display: inline-flex;
+  align-items: center;
+  /* padding: 10px 20px 10px 10px; */
+}
+
+.contactTimeSpan::before {
+  content: "";
+  background-color: var(--bg-color);
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 0 2px var(--secondary-color);
+}
+
+.contactTimeInput:checked + .contactTimeSpan::before {
+  box-shadow: inset 0 0 0 5px var(--secondary-color);
 }
 
 .btnDiv {
@@ -538,13 +692,26 @@ h1 {
   cursor: pointer;
 }
 
-.btnDiv:hover {
+.btnDiv:hover,
+.servicesDescBtn:hover,
+.startProjectBtn:hover {
   background: var(--bg-color);
   border: 1px solid var(--secondary-color);
 }
 
-.btnDiv:hover .btn {
+.btnDiv:hover .btn,
+.servicesDescBtn:hover,
+.startProjectBtn:hover {
   color: var(--secondary-color);
+}
+
+.startProjectBtn {
+  background: var(--secondary-color);
+  padding: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--bg-color);
 }
 
 .btn {
@@ -556,12 +723,75 @@ h1 {
   cursor: pointer;
 }
 
+/* Services Section */
+#ServicesSection h1 {
+  text-align: center;
+  font-size: clamp(2.5rem, 2.5vw, 4rem);
+  color: var(--footer-bg-color);
+  margin: 7rem auto;
+}
+
+.servicesDescDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* margin-top: 4rem; */
+  padding-top: 6rem;
+}
+
+.servicesDescIcon {
+  font-size: 2rem;
+}
+
+#landingPageIcon {
+  width: 10% !important;
+}
+
+.servicesDecTitle {
+  text-align: center;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  /* margin-top: 4rem;
+  margin-bottom: 2rem; */
+}
+
+.descriptionParagraph {
+  /* width: 80%; */
+  background: var(--secondary-color);
+  color: var(--bg-color);
+  padding: 1rem 2rem;
+  margin: 1rem auto;
+}
+
+.descriptionParagraph p {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 369px) {
+  .headerTitle {
+    top: 37%;
+  }
+  .submitMessageForm {
+    width: 80%;
+  }
+}
+
 @media screen and (min-width: 569px) {
+  .logo {
+    width: 17%;
+  }
   .servicesDiv {
     width: 90%;
   }
   .servicesCard {
     width: 47%;
+  }
+  .servicesCard:hover {
+    height: 375px;
+  }
+  .servicesCard .servicesContent .details {
+    transform: translateY(75px);
   }
   .angle1,
   .angle1::after {
@@ -573,10 +803,17 @@ h1 {
   #contactFormSection h2 {
     margin: 3rem;
   }
+  .descriptionParagraph {
+    padding: 1rem 4rem;
+  }
 }
 
 @media screen and (min-width: 769px) {
-  .navbar {
+  .logo {
+    width: 100%;
+  }
+  #navbar {
+    flex: 5;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -585,7 +822,7 @@ h1 {
     top: 0;
   }
 
-  .navbar a {
+  #navbar a {
     display: block;
     font-size: 1.1rem;
     text-decoration: none;
@@ -594,16 +831,32 @@ h1 {
     margin-right: 2rem;
   }
 
-  .menuIconLabel {
+  /* .menuIconLabel {
+    display: none;
+  } */
+
+  #togglerDiv {
     display: none;
   }
-
   .servicesCard {
     height: 200px;
   }
 
   .submitMessageForm {
     width: 60%;
+  }
+
+  .contactTimeDiv,
+  .contactWayDiv {
+    width: 45%;
+  }
+
+  .descriptionParagraph {
+    /* width: 80%; */
+    background: var(--secondary-color);
+    color: var(--bg-color);
+    padding: 1rem 8rem;
+    margin: 1rem auto;
   }
 }
 
@@ -612,8 +865,13 @@ h1 {
     padding: 1.3rem 3%;
   }
 
+  .logo {
+    width: 75%;
+  }
+
   .title {
-    margin: 5rem 0;
+    /* margin: 5rem 0; */
+    padding: 5rem 0;
   }
 
   .ourServicesTitle {
@@ -633,6 +891,9 @@ h1 {
 
   .servicesCard:hover .imgDiv {
     height: 8rem;
+  }
+  .servicesCard .servicesContent .details {
+    transform: translateY(70px);
   }
   .angle1,
   .angle1::after {
