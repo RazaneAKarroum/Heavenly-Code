@@ -243,7 +243,7 @@ body {
 
 .title {
   /* margin: 5.5rem 0; */
-  padding: 5.5rem 0;
+  padding: 6.6rem 0;
 }
 
 .ourServicesTitle {
@@ -760,12 +760,26 @@ textarea::placeholder {
   /* width: 80%; */
   background: var(--secondary-color);
   color: var(--bg-color);
-  padding: 1rem 2rem;
+  padding: 2rem;
   margin: 1rem auto;
 }
 
 .descriptionParagraph p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.servicesBtn {
+  text-decoration: none;
+  color: var(--secondary-color);
+  background-color: var(--bg-color);
+  padding: 1rem;
+  border-radius: 32px;
+}
+
+.servicesBtn:hover {
+  color: var(--bg-color);
+  background: var(--secondary-color);
+  border: 1px solid var(--bg-color);
 }
 
 @media screen and (min-width: 369px) {
@@ -804,7 +818,7 @@ textarea::placeholder {
     margin: 3rem;
   }
   .descriptionParagraph {
-    padding: 1rem 4rem;
+    padding: 2rem 4rem;
   }
 }
 
@@ -855,7 +869,7 @@ textarea::placeholder {
     /* width: 80%; */
     background: var(--secondary-color);
     color: var(--bg-color);
-    padding: 1rem 8rem;
+    padding: 2rem 8rem;
     margin: 1rem auto;
   }
 }
@@ -867,11 +881,6 @@ textarea::placeholder {
 
   .logo {
     width: 75%;
-  }
-
-  .title {
-    /* margin: 5rem 0; */
-    padding: 5rem 0;
   }
 
   .ourServicesTitle {
